@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width">
   <title>5) Navmesh</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <!--scripts-->
   <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
   <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
@@ -14,15 +15,19 @@
 
 <body>
   <a-scene physics="gravity: -9.8;restitution: 0.1" inspector-plugin-recast>
-    <a-plane id="floor" position="0 0 0" rotation="-90 0 0" color="green" scale="20 20 20"></a-plane>
-    <a-box color="red" id="redWall" width="0.5" height="6" depth="3" postion="0 0 0"></a-box>
-    <a-cylinder color="purple" id="purpleWall" radius="1" height="6" position="2.5 0 0"></a-cylinder>
+    <!--Assests-->
     <a-assests>
       <aassest-item id="myNavMesh" src="navmesh.gltf"></aassest-item>
     </a-assests>
-    <a-gltf-model src="#myNavMesh" nav-mesh-position="0 0.1 0" visible="false"></a-gltf-model>
-    <a-entity id="rig" position="-2.9 0.1 2.2" movement-controls="constrainToNavmesh:true; speed: 0.5;">
-      <a-entity camera id="camera" position="0 1.6 0" look-controls="pointerLockEnabled:false" extended-wasd-controls="flyEnabled: true; turnEnabled; true; lookEnabled: true; maxLookAngle: 60;">
+    <!--Walls and floor-->
+    <a-plane id="floor" position="0 0 0" rotation="-90 0 0" color="green" scale="20 20 20"></a-plane>
+    <a-box color="red" id="redWall" width="0.5" height="6" depth="3" postion="0 0 0"></a-box>
+    <a-cylinder color="purple" id="purpleWall" radius="1" height="6" position="2.5 0 0"></a-cylinder>
+    <a-gltf-model src="#myNavMesh" nav-mesh position="0 0.1 0" visible="false"></a-gltf-model>
+    <!--Entities-->
+    <a-entity id="rig" position="-2.9 0.1 2.2" movement-controls="constrainToNavMesh:true; speed: 0.5;">
+      <a-entity camera id="camera" position="0 1.6 0" look-controls="pointerLockEnabled:false"
+        extended-wasd-controls="flyEnabled: true; turnEnabled: true; lookEnabled: true; maxLookAngle: 60;">
       </a-entity>
     </a-entity>
   </a-scene>
